@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Raffle extends Model
+class Applicant extends Model
 {
-    /** @use HasFactory<\Database\Factories\RaffleFactory> */
+    /** @use HasFactory<\Database\Factories\ApplicantFactory> */
     use HasFactory;
 
-    public function applicants(): HasMany
+    public function raffle(): belongsTo
     {
-        return $this->hasMany(Applicant::class);
+        return $this->hasMany(Raffle::class);
     }
 }
