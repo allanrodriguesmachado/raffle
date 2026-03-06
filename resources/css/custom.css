@@ -1,0 +1,312 @@
+/* =========================
+   Melhorias Visuais Globais
+   ========================= */
+
+/* Animações customizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-soft {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Classe global de animação */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* ================================
+   Melhorias no Componente Principal
+   ================================ */
+
+.raffle-card {
+    @apply rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50
+           shadow-xl dark:border-slate-700 dark:from-slate-900 dark:to-slate-800;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.raffle-card:hover {
+    @apply shadow-2xl;
+    transform: translateY(-2px);
+}
+
+.raffle-header {
+    @apply mb-8 border-b border-slate-100 dark:border-slate-700 pb-6;
+}
+
+.raffle-title {
+    @apply text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700
+           dark:from-white dark:to-slate-300 bg-clip-text text-transparent;
+}
+
+.raffle-subtitle {
+    @apply text-sm text-slate-600 dark:text-slate-400 mt-2 font-medium;
+}
+
+/* Input styling */
+.raffle-input {
+    @apply w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600
+           bg-white dark:bg-slate-800 text-slate-900 dark:text-white
+           placeholder-slate-400 dark:placeholder-slate-500 outline-none
+           transition-all duration-200 font-medium;
+}
+
+.raffle-input:focus {
+    @apply border-blue-500 dark:border-blue-400 ring-2 ring-blue-100 dark:ring-blue-900/30 shadow-lg;
+}
+
+/* Button styling */
+.raffle-button {
+    @apply w-full px-6 py-3 rounded-lg font-semibold shadow-lg
+           transition-all duration-200 transform;
+}
+
+.raffle-button:hover {
+    @apply shadow-xl -translate-y-0.5;
+}
+
+.raffle-button:active {
+    @apply scale-95;
+}
+
+.raffle-button-primary {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800
+           dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white;
+}
+
+.raffle-button-secondary {
+    @apply bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800
+           dark:from-slate-500 dark:to-slate-600 dark:hover:from-slate-600 dark:hover:to-slate-700 text-white;
+}
+
+/* Success message styling */
+.raffle-success {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50
+           dark:from-emerald-900/20 dark:to-teal-900/20 border border-emerald-200
+           dark:border-emerald-800 px-6 py-4 mb-6;
+}
+
+.raffle-success::before {
+    @apply absolute inset-0 bg-emerald-500/5 dark:bg-emerald-500/10;
+    content: '';
+}
+
+.raffle-success-content {
+    @apply relative flex items-center gap-3;
+}
+
+/* Participants list */
+.raffle-participants {
+    @apply mt-8 pt-8 border-t border-slate-200 dark:border-slate-700;
+}
+
+.raffle-participant-item {
+    @apply flex items-center gap-3 rounded-lg bg-slate-100 dark:bg-slate-700
+           px-3 py-2 group transition-all duration-200 transform;
+}
+
+.raffle-participant-item:hover {
+    @apply bg-slate-200 dark:bg-slate-600 -translate-x-0.5;
+}
+
+.raffle-participant-avatar {
+    @apply flex h-8 w-8 items-center justify-center rounded-full
+           bg-gradient-to-br from-blue-400 to-blue-600 text-white text-xs font-bold flex-shrink-0;
+}
+
+.raffle-participant-email {
+    @apply flex-1 min-w-0 text-sm text-slate-700 dark:text-slate-300 truncate font-medium;
+}
+
+/* Error message styling */
+.raffle-error {
+    @apply flex items-center gap-2 rounded-lg bg-red-50 dark:bg-red-900/20
+           border border-red-200 dark:border-red-800 px-3 py-2 mt-2;
+}
+
+/* ============================
+   Melhorias no Layout Geral
+   ============================ */
+
+body {
+    @apply bg-gradient-to-br from-slate-50 to-slate-100
+           dark:from-slate-950 dark:to-slate-900 transition-colors duration-300;
+}
+
+/* Scrollbar customizado */
+::-webkit-scrollbar {
+    @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-slate-100 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-500;
+}
+
+/* Selection styling */
+::selection {
+    @apply bg-blue-500 text-white;
+}
+
+::-moz-selection {
+    @apply bg-blue-500 text-white;
+}
+
+/* ================================
+   Transições e Efeitos Suaves
+   ================================ */
+
+* {
+    @apply transition-colors duration-300 ease-in-out;
+}
+
+/* Disable transition para transform */
+* {
+    transition-property: background-color, border-color, color, opacity;
+}
+
+.transition-transform {
+    transition-property: transform;
+}
+
+/* ============================
+   Responsividade Melhorada
+   ============================ */
+
+@media (max-width: 640px) {
+    .raffle-title {
+        @apply text-2xl;
+    }
+
+    .raffle-card {
+        @apply p-6;
+    }
+
+    .raffle-button {
+        @apply py-2.5;
+    }
+}
+
+/* ============================
+   Dark Mode Enhancements
+   ============================ */
+
+@media (prefers-color-scheme: dark) {
+    .raffle-card {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+    }
+
+    .dark-shadow {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ============================
+   Efeitos de Loading
+   ============================ */
+
+.loading-skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* ============================
+   Ícones e Badges
+   ============================ */
+
+.badge {
+    @apply inline-flex items-center justify-center rounded-full
+           bg-blue-100 dark:bg-blue-900 px-3 py-1 text-xs font-bold
+           text-blue-700 dark:text-blue-300;
+}
+
+.badge-success {
+    @apply bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300;
+}
+
+.badge-error {
+    @apply bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300;
+}
+
+/* ============================
+   Melhorias de Acessibilidade
+   ============================ */
+
+.focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-slate-900;
+}
+
+button:focus-visible {
+    @apply ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-slate-900;
+}
+
+/* ============================
+   Hover States
+   ============================ */
+
+.hover-lift {
+    @apply transition-transform duration-300 transform hover:-translate-y-1;
+}
+
+.hover-glow {
+    @apply transition-all duration-300;
+}
+
+.hover-glow:hover {
+    @apply shadow-lg;
+}
+
